@@ -16,6 +16,3 @@ augroup abbreviations
     autocmd BufRead */Data_Utils/* :ab <buffer> datu Data_Utils
 
 augroup END
-
-
-nnoremap <S-F4> :!start C:\db_service_test\Applications\Utility_Workbook\Code_Eval\WinPython-64bit-3.4.3.5\WinPython Command Prompt.exe "python -i Z:\application_code\DB_Projects\Job_Scheduler\JS_JSON_Driver.py --json_path=C:\db_service_test\Proj_Folder\mknopf\web_project\Websheets\Sheet1.json"<CR>
