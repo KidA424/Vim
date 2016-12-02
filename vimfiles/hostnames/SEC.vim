@@ -9,12 +9,3 @@ augroup run_commands
     autocmd BufRead Update_Spreadsheet.pyw :nnoremap <buffer> <S-F2> :!start C:\db_service_test\Applications\Utility_Workbook\Code_Eval\WinPython-64bit-3.4.3.5\WinPython Command Prompt.exe "python -i Z:\application_code\DB_Projects\Update_Spreadsheet\Update_Spreadsheet.pyw --json=C:\db_service_test\Proj_Folder\mknopf\Phase_1\Specs\Update_Spreadsheet\spec_Update_Spreadsheet_All.json"<CR>
 
 augroup END 
-
-augroup abbreviations
-
-    autocmd!
-    autocmd BufRead Excel_Interface.*\|JS_Excel_Interface.py :ab <buffer> exc Excel_Interface
-    autocmd BufRead Data_Application.* :ab <buffer> dat Data_Application
-    autocmd BufRead */Data_Utils/* :ab <buffer> datu Data_Utils
-
-augroup END
