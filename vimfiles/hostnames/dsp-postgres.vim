@@ -1,3 +1,5 @@
+set guifont=Lucida_Console:h12:b:cDEFAULT
+
 augroup run_commands
 
     autocmd!

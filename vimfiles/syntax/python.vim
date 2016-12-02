@@ -567,6 +567,6 @@ endif
 
 "Not in original file.  Make the raise keyword the same
 "color as other error-related keywords.
-syn keyword Error raise
+syn keyword Error raise try
 
 let b:current_syntax = "python"

@@ -4,18 +4,8 @@
 "                                       --------------------------------
 "                                       --------------------------------
 
-
-
-" ---------------------------
-" ---------------------------
-" --------  Vundle  ---------
-" ---------------------------
-" ---------------------------
-
-
 set nocompatible
 filetype off
-
 filetype plugin indent on
 
 
@@ -41,11 +31,13 @@ set title
 " ---------------------------
 " ---------------------------
 
-
-"Turn off autocomments
-set formatoptions-=c
-set formatoptions-=r
-set formatoptions-=o
+" Tab settings
+setlocal tabstop=4
+setlocal softtabstop=4
+setlocal shiftwidth=4
+"setlocal textwidth=79
+setlocal expandtab
+setlocal autoindent
 
 "Make arrow keys wrap at ends of lines
 set whichwrap+=h,l
@@ -88,10 +80,6 @@ set history=1000
 set undolevels=1000
 
 "Set tab width
-"set tabstop=4
-"set softtabstop=4
-"set shiftwidth=4
-"set shiftround
 set expandtab
 
 "Get rid of annoying files
@@ -120,9 +108,6 @@ set guitablabel=%t
 "Set leader
 let mapleader = ","
 
-"Search opens with previous search phrase prefilled-in
-"nnoremap / :set hlsearch<CR>/<Up>
-
 "Select all
 nnoremap <c-a> ggVG
 
@@ -134,9 +119,6 @@ nnoremap <Space> i<Space><Esc>l
 
 "Create newline in normal mode
 nnoremap <S-Space> mq0"ay$o<Esc>"ap`qjmqk0"_d$`q
-
-"Yank to end of line
-nnoremap Y mqv$hy`q
 
 "Copy/paste to/from clipboard
 noremap <F5> "*y
@@ -157,10 +139,10 @@ inoremap <S-Tab> <C-d>
 nnoremap <CR> :nohlsearch<CR>
 
 "Bind Ctrl+<movement> keys to move around windows
+nnoremap <c-h> <c-w>h
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-l> <c-w>l
-nnoremap <c-h> <c-w>h
 
 "Open new tab
 nnoremap <C-n> :tabnew<CR>
@@ -173,13 +155,13 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 nnoremap <leader>epy :tabe $HOME/vimfiles/ftplugin/python/python.vim<cr>
 
 "Edit html.vim
-nnoremap <leader>eh :tabe $HOME/vimfiles/ftplugin/html.vim<cr>
+nnoremap <leader>eh :tabe $HOME/vimfiles/ftplugin/html/html.vim<cr>
 
 "Edit javascript.vim
 nnoremap <leader>ejs :tabe $HOME/vimfiles/ftplugin/javascript/javascript.vim<cr>
 
 "Edit javascript.vim
-nnoremap <leader>ejade :tabe $HOME/vimfiles/ftplugin/pug/pug.vim<cr>
+nnoremap <leader>epug :tabe $HOME/vimfiles/ftplugin/pug/pug.vim<cr>
 
 "Open explorer window with current file selected
 nnoremap <F12> :!start explorer /e, /select, <cWORD><CR>
@@ -193,11 +175,14 @@ vmap ,a <Plug>(EasyAlign)
 nmap ,a <Plug>(EasyAlign)
 
 "NerdTree
-nnoremap ,t :NERDTreeToggle<CR>
+nnoremap <leader>t :NERDTreeToggle<CR>
+
+"Synchronize NERDTree root node with current tab
+nnoremap <leader>r :NERDTreeFind<CR>
 
 " Change tabs with page-up, page-down
-nnoremap ] gt
-nnoremap [ gT
+nnoremap } gt
+nnoremap { gT
 
 nnoremap <C-]> :execute "tabm" tabpagenr()<CR>
 nnoremap <C-[> :execute "tabm" tabpagenr() - 2<CR>
@@ -210,7 +195,8 @@ nnoremap <C-[> :execute "tabm" tabpagenr() - 2<CR>
 " ----------------------------------
 
 " Turn off starting next line with comment
-autocmd FileType * setlocal formatoptions-=cro
+"autocmd FileType * setlocal formatoptions-=cro
+set formatoptions-=cro
 
 " Align line-wise comment delimiters flush left instead of following code indentation
 let g:NERDDefaultAlign='start'
@@ -218,9 +204,8 @@ let g:NERDDefaultAlign='start'
 
 
 " Highlight all instances of word under cursor, when idle.
-" Useful when studying strange source code.
-" Type ,/ to toggle highlighting on/off.
-nnoremap ,/ :if AutoHighlightToggle()<Bar>set hls<Bar>endif<CR>
+" Type <leader>/ to toggle highlighting on/off.
+nnoremap <leader>/ :if AutoHighlightToggle()<Bar>set hls<Bar>endif<CR>
 function! AutoHighlightToggle()
   let @/ = ''
   if exists('#auto_highlight')
@@ -239,3 +224,10 @@ function! AutoHighlightToggle()
     return 1
   endif
 endfunction
+
+
+
+
+
+let hostname = substitute(system('hostname'), '\n', '', '')
+exec "source " . $HOME . "\\vimfiles\\hostnames\\" . hostname . ".vim"
