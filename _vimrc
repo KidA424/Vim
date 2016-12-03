@@ -4,6 +4,9 @@
 "                                       --------------------------------
 "                                       --------------------------------
 
+
+exec "lcd " . expand($HOME)
+
 set nocompatible
 filetype off
 filetype plugin indent on
