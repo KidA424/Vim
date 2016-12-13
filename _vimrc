@@ -4,6 +4,9 @@
 "                                       --------------------------------
 "                                       --------------------------------
 
+
+exec "lcd " . expand($HOME)
+
 set nocompatible
 filetype off
 filetype plugin indent on
@@ -195,39 +198,38 @@ nnoremap <C-[> :execute "tabm" tabpagenr() - 2<CR>
 " ----------------------------------
 
 " Turn off starting next line with comment
-"autocmd FileType * setlocal formatoptions-=cro
 set formatoptions-=cro
 
 " Align line-wise comment delimiters flush left instead of following code indentation
 let g:NERDDefaultAlign='start'
 
-
-
-" Highlight all instances of word under cursor, when idle.
-" Type <leader>/ to toggle highlighting on/off.
 nnoremap <leader>/ :if AutoHighlightToggle()<Bar>set hls<Bar>endif<CR>
 function! AutoHighlightToggle()
-  let @/ = ''
-  if exists('#auto_highlight')
-    au! auto_highlight
-    augroup! auto_highlight
-    setl updatetime=4000
-    echo 'Highlight current word: off'
-    return 0
-  else
-    augroup auto_highlight
-      au!
-      au CursorHold * let @/ = '\V\<'.escape(expand('<cword>'), '\').'\>'
-    augroup end
-    setl updatetime=500
-    echo 'Highlight current word: ON'
-    return 1
-  endif
+let @/ = ''
+    if exists('#auto_highlight')
+        au! auto_highlight
+        augroup! auto_highlight
+        setl updatetime=4000
+        echo 'Highlight current word: off'
+        return 0
+    else
+        augroup auto_highlight
+            au!
+            au CursorHold * let @/ = '\V\<'.escape(expand('<cword>'), '\').'\>'
+        augroup end
+        setl updatetime=500
+        echo 'Highlight current word: ON'
+        return 1
+    endif
 endfunction
 
 
-
-
-
 let hostname = substitute(system('hostname'), '\n', '', '')
-exec "source " . $HOME . "\\vimfiles\\hostnames\\" . hostname . ".vim"
+
+if hostname == 'KevinKnopf-PC'
+    exec "source " . $HOME . "\\vimfiles\\hostnames\\KevinKnopf-PC.vim"
+elseif hostname == 'dsp-postgres'
+    exec "source " . $HOME . "\\vimfiles\\hostnames\\dsp-postgres.vim"
+else
+    exec "source " . $HOME . "\\vimfiles\\hostnames\\SEC.vim"
+endif
