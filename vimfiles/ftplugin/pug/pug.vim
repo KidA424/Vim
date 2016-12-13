@@ -3,6 +3,9 @@
 " Maintainer: Joshua Borton
 " Credits: Tim Pope
 
+" Make comments follow indentation
+let g:NERDDefaultAlign='left'
+
 " Set tabwidth to 2
 set expandtab
 set shiftwidth=2
