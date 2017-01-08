@@ -190,6 +190,17 @@ nnoremap { gT
 nnoremap <C-]> :execute "tabm" tabpagenr()<CR>
 nnoremap <C-[> :execute "tabm" tabpagenr() - 2<CR>
 
+" Enclose in single quotes
+nnoremap <leader>' mqbi'<ESC>ea'<ESC>`q
+
+
+
+" Source utilities
+exec "source " . $HOME . "\\vimfiles\\utilities\\utilities.vim"
+
+
+
+
 
 " ----------------------------------
 " ----------------------------------
