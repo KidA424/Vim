@@ -1,1 +1,1 @@
-au BufNewFile,BufRead *.vue setf vue.html.pug
+au BufNewFile,BufRead *.vue setf vue

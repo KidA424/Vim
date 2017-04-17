@@ -48,7 +48,7 @@ syntax include @JS syntax/javascript.vim
 if exists("b:current_syntax")
   unlet b:current_syntax
 endif
-syntax region javascript keepend start=/<script\( lang="babel"\)\?\( type="text\/babel"\)\?>/ end="</script>" contains=@JS fold
+syntax region javascript keepend start=/<script\( lang=["']babel["']\)\?\( type="text\/babel"\)\?>/ end="</script>" contains=@JS fold
 
 if s:syntaxes.coffee
   syntax include @COFFEE syntax/coffee.vim
@@ -70,7 +70,7 @@ if s:syntaxes.stylus
   if exists("b:current_syntax")
     unlet b:current_syntax
   endif
-  syntax region stylus keepend start=/<style lang="[^"]*stylus[^"]*"\( \+scoped\)\?>/ end="</style>" contains=@stylus fold
+  syntax region stylus keepend start=/<style lang=["'][^"]*stylus[^"]*["']\( \+scoped\)\?>/ end="</style>" contains=@stylus fold
 endif
 
 if s:syntaxes.sass
@@ -78,7 +78,7 @@ if s:syntaxes.sass
   if exists("b:current_syntax")
     unlet b:current_syntax
   endif
-  syntax region sass keepend start=/<style\( \+scoped\)\? lang="[^"]*sass[^"]*"\( \+scoped\)\?>/ end="</style>" contains=@sass fold
+  syntax region sass keepend start=/<style\( \+scoped\)\? lang=["'][^"]*sass[^"]*["']\( \+scoped\)\?>/ end="</style>" contains=@sass fold
 endif
 
 if s:syntaxes.scss
@@ -86,7 +86,7 @@ if s:syntaxes.scss
   if exists("b:current_syntax")
     unlet b:current_syntax
   endif
-  syntax region scss keepend start=/<style\( \+scoped\)\? lang="[^"]*scss[^"]*"\( \+scoped\)\?>/ end="</style>" contains=@scss fold
+  syntax region scss keepend start=/<style\( \+scoped\)\? lang=["'][^"]*scss[^"]*["']\( \+scoped\)\?>/ end="</style>" contains=@scss fold
 endif
 
 if s:syntaxes.less
@@ -94,7 +94,7 @@ if s:syntaxes.less
   if exists("b:current_syntax")
     unlet b:current_syntax
   endif
-  syntax region less keepend matchgroup=PreProc start=/<style\%( \+scoped\)\? lang="less"\%( \+scoped\)\?>/ end="</style>" contains=@less fold
+  syntax region less keepend matchgroup=PreProc start=/<style\%( \+scoped\)\? lang=["']less["']\%( \+scoped\)\?>/ end="</style>" contains=@less fold
 endif
 
 let b:current_syntax = "vue"

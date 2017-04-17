@@ -1,1 +1,1 @@
-au BufNewFile,BufRead *.gsp set filetype=gsp.html
+au BufNewFile,BufRead *.gsp set filetype=gsp
