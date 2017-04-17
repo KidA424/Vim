@@ -236,6 +236,31 @@ let @/ = ''
 endfunction
 
 
+
+" -----------------------------
+" -----------------------------
+" --------  Templates  --------
+" -----------------------------
+" -----------------------------
+
+" add templates in templates/ using filetype as file name
+"if has("win32") || has ('win64')
+"    let $VIMHOME = $HOME."\\vimfiles\\"
+"else
+"    let $VIMHOME = $HOME."/.vim/"
+"endif
+"au BufNewFile * :silent! exec ":0r ".$VIMHOME."templates\\".&ft.".".&ft
+au BufNewFile,BufRead * call InsertFtTemplate()
+
+
+
+" -----------------------------
+" -----------------------------
+" --------  Hostnames  --------
+" -----------------------------
+" -----------------------------
+
+" source hostname-dependent config file
 let hostname = substitute(system('hostname'), '\n', '', '')
 
 if hostname == 'KevinKnopf-PC'
