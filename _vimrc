@@ -97,6 +97,7 @@ set foldlevel=99
 "Don't show full path in tab name
 set guitablabel=%t
 
+let g:sql_type_default = 'pgsql'
 
 
 
