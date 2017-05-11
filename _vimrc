@@ -187,8 +187,8 @@ nnoremap <leader>r :NERDTreeFind<CR>
 nnoremap } gt
 nnoremap { gT
 
-nnoremap <C-]> :execute "tabm" tabpagenr()<CR>
-nnoremap <C-[> :execute "tabm" tabpagenr() - 2<CR>
+nnoremap <M-]> :execute "tabm" tabpagenr()<CR>
+nnoremap <M-[> :execute "tabm" tabpagenr() - 2<CR>
 
 " Enclose in single quotes
 nnoremap <leader>' mqbi'<ESC>ea'<ESC>`q
