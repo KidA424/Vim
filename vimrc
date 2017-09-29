@@ -247,7 +247,7 @@ endfunction
 let hostname = substitute(system('hostname'), '\n', '', '')
 
 " Source utilities
-if hostname != 'cent7-1'
+if hostname != 'cent7-1' && hostname != 'michael-VirtualBox'
     exec "source " . $HOME . "\\vimfiles\\utilities\\utilities.vim"
 endif
 
@@ -257,6 +257,8 @@ elseif hostname == 'dsp-postgres'
     exec "source " . $HOME . "\\vimfiles\\hostnames\\dsp-postgres.vim"
 elseif hostname == 'cent7-1'
     exec "source " . $HOME . "/.vim/hostnames/cent7-1.vim"
+elseif hostname == 'michael-VirtualBox'
+    exec "source " . $HOME . "/.vim/hostnames/michael-VirtualBox.vim"
 else
     exec "source " . $HOME . "\\vimfiles\\hostnames\\SEC.vim"
 endif
