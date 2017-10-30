@@ -20,8 +20,13 @@ filetype plugin indent on
 " ------------------------------
 " ------------------------------
 syntax on
-colorscheme solarized
-set guifont=Lucida_Console:h10:cDEFAULT
+
+if has('gui_macvim')
+    set guifont=Monaco:h12
+    set background=dark
+else
+    set guifont=Lucida_Console:h10:cDEFAULT
+endif
 
 "Make title of tab be title of open file
 set title
@@ -246,11 +251,6 @@ endfunction
 " source hostname-dependent config file
 let hostname = substitute(system('hostname'), '\n', '', '')
 
-" Source utilities
-if hostname != 'cent7-1' && hostname != 'michael-VirtualBox'
-    exec "source " . $HOME . "\\vimfiles\\utilities\\utilities.vim"
-endif
-
 if hostname == 'KevinKnopf-PC'
     exec "source " . $HOME . "\\vimfiles\\hostnames\\KevinKnopf-PC.vim"
 elseif hostname == 'dsp-postgres'
@@ -259,8 +259,10 @@ elseif hostname == 'cent7-1'
     exec "source " . $HOME . "/.vim/hostnames/cent7-1.vim"
 elseif hostname == 'michael-VirtualBox'
     exec "source " . $HOME . "/.vim/hostnames/michael-VirtualBox.vim"
+"else
+"    exec "source " . $HOME . "\\vimfiles\\hostnames\\SEC.vim"
 else
-    exec "source " . $HOME . "\\vimfiles\\hostnames\\SEC.vim"
+    exec "source " . $HOME . "/.vim/hostnames/michael-VirtualBox.vim"
 endif
 
 
