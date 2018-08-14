@@ -13,7 +13,6 @@ filetype plugin indent on
 
 
 
-
 " ------------------------------
 " ------------------------------
 " --------  Appearance  --------
@@ -102,7 +101,7 @@ set foldlevel=99
 "Don't show full path in tab name
 set guitablabel=%t
 
-
+set omnifunc=syntaxcomplete#Complete
 
 
 
