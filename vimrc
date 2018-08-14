@@ -197,6 +197,8 @@ nnoremap <M-[> :execute "tabm" tabpagenr() - 2<CR>
 " Enclose in single quotes
 nnoremap <leader>' mqbi'<ESC>ea'<ESC>`q
 
+" Copy current file absolute path
+nnoremap <leader>cp :let @+ = expand("%:p")<CR>
 
 
 
@@ -211,7 +213,7 @@ nnoremap <leader>' mqbi'<ESC>ea'<ESC>`q
 " ----------------------------------
 
 " Turn off starting next line with comment
-set formatoptions-=cro
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 " Align line-wise comment delimiters flush left instead of following code indentation
 let g:NERDDefaultAlign='start'
@@ -259,6 +261,7 @@ let g:ale_fixers = {
 \   'javascript': ['eslint'],
 \}
 
+highlight SpellBad term=undercurl ctermbg=12 gui=undercurl guisp=#ff3300
 
 "vim-flow
 let g:flow#enable = 0
