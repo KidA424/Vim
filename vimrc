@@ -39,9 +39,9 @@ set title
 " ---------------------------
 
 " Tab settings
-setlocal tabstop=4
-setlocal softtabstop=4
-setlocal shiftwidth=4
+"setlocal tabstop=4
+"setlocal softtabstop=4
+"setlocal shiftwidth=4
 "setlocal textwidth=79
 setlocal expandtab
 setlocal autoindent
@@ -103,6 +103,9 @@ set guitablabel=%t
 
 set omnifunc=syntaxcomplete#Complete
 
+"Change working directory to current file dir on on new buffer
+autocmd BufEnter * if &ft !~ '^nerdtree$' | silent! lcd %:p:h | endif
+
 
 
 
@@ -111,7 +114,7 @@ set omnifunc=syntaxcomplete#Complete
 " --------  Key mappings --------
 " -------------------------------
 " -------------------------------
-    
+
 "Set leader
 let mapleader = ","
 
@@ -202,6 +205,14 @@ nnoremap <leader>cp :let @+ = expand("%:p")<CR>
 
 
 
+"""" Control-P file search """"
+"Ctrl p for directory search
+nnoremap <d-p> :CtrlP<cr>
+
+let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_root_markers = ['Root.js']
+
+
 
 
 
@@ -276,23 +287,33 @@ let g:flow#enable = 0
 " -----------------------------
 
 " source hostname-dependent config file
-let hostname = substitute(system('hostname'), '\n', '', '')
+"let hostname = substitute(system('hostname'), '\n', '', '')
 
-if hostname == 'KevinKnopf-PC'
-    exec "source " . $HOME . "\\vimfiles\\hostnames\\KevinKnopf-PC.vim"
-elseif hostname == 'dsp-postgres'
-    exec "source " . $HOME . "\\vimfiles\\hostnames\\dsp-postgres.vim"
-elseif hostname == 'cent7-1'
-    exec "source " . $HOME . "/.vim/hostnames/cent7-1.vim"
-elseif hostname == 'michael-VirtualBox'
-    exec "source " . $HOME . "/.vim/hostnames/michael-VirtualBox.vim"
+"if hostname == 'KevinKnopf-PC'
+"    exec "source " . $HOME . "\\vimfiles\\hostnames\\KevinKnopf-PC.vim"
+"elseif hostname == 'dsp-postgres'
+"    exec "source " . $HOME . "\\vimfiles\\hostnames\\dsp-postgres.vim"
+"elseif hostname == 'cent7-1'
+"    exec "source " . $HOME . "/.vim/hostnames/cent7-1.vim"
+"elseif hostname == 'michael-VirtualBox'
+"    exec "source " . $HOME . "/.vim/hostnames/michael-VirtualBox.vim"
 "else
-"    exec "source " . $HOME . "\\vimfiles\\hostnames\\SEC.vim"
+"    exec "source " . $HOME . "/.vim/hostnames/michael-VirtualBox.vim"
+"endif
+
+
+let NERDTreeShowHidden=1
+
+if has('gui_macvim')
+    colorscheme solarized
 else
-    exec "source " . $HOME . "/.vim/hostnames/michael-VirtualBox.vim"
+    colorscheme default
 endif
 
+map <F5> "+y
+map <F9> "+p
 
+hi VertSplit guifg=gray guibg=gray
 
 " -----------------------------
 " -----------------------------
@@ -308,3 +329,4 @@ endif
 "endif
 "au BufNewFile * :silent! exec ":0r ".$VIMHOME."templates\\".&ft.".".&ft
 "au BufNewFile,BufRead * call InsertFtTemplate()
+
