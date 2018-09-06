@@ -23,6 +23,9 @@ syntax on
 if has('gui_macvim')
     set guifont=Monaco:h12
     set background=dark
+
+    "remove nerdtree scrollbar
+    set guioptions-=L
 else
     set guifont=Lucida_Console:h10:cDEFAULT
 endif
@@ -194,8 +197,13 @@ nnoremap <leader>r :NERDTreeFind<CR>
 nnoremap } gt
 nnoremap { gT
 
+" move tab left/right
 nnoremap <M-]> :execute "tabm" tabpagenr()<CR>
 nnoremap <M-[> :execute "tabm" tabpagenr() - 2<CR>
+"for mac
+nnoremap <D-]> :execute "tabm" tabpagenr() + 1<CR>
+nnoremap <D-[> :execute "tabm" tabpagenr() - 2<CR>
+
 
 " Enclose in single quotes
 nnoremap <leader>' mqbi'<ESC>ea'<ESC>`q
@@ -208,9 +216,6 @@ nnoremap <leader>cp :let @+ = expand("%:p")<CR>
 """" Control-P file search """"
 "Ctrl p for directory search
 nnoremap <d-p> :CtrlP<cr>
-
-let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_root_markers = ['Root.js']
 
 
 
@@ -278,6 +283,14 @@ highlight SpellBad term=undercurl ctermbg=12 gui=undercurl guisp=#ff3300
 let g:flow#enable = 0
 
 
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/](\.(git|hg|svn))|node_modules|dev|flow\-typed|flow|static|tests|tmp$',
+  \ 'file': '\v\.(exe|so|dll)$',
+  \ 'link': 'some_bad_symbolic_links',
+  \ }
+
+"Set ctrl-p working directory to path containing yarn.lock
+let g:ctrlp_root_markers = ['yarn.lock']
 
 
 " -----------------------------
