@@ -211,12 +211,15 @@ nnoremap <leader>' mqbi'<ESC>ea'<ESC>`q
 " Copy current file absolute path
 nnoremap <leader>cp :let @+ = expand("%:p")<CR>
 
+" Move entire line up and down
+vnoremap <C-j> :m '>+1<CR>gv=gv
+vnoremap <C-k> :m '<-2<CR>gv=gv
+
 
 
 """" Control-P file search """"
 "Ctrl p for directory search
 nnoremap <d-p> :CtrlP<cr>
-
 
 
 
